@@ -50,8 +50,8 @@ function getFunctionBody(func) {
  *  ]) => [0, 1, 2]
  *
  */
-function getArgumentsCount(/* funcs */) {
-  throw new Error('Not implemented');
+function getArgumentsCount(funcs) {
+  return funcs.map((func) => func.length);
 }
 
 /**
@@ -70,8 +70,10 @@ function getArgumentsCount(/* funcs */) {
  *   power05(16) => 4
  *
  */
-function getPowerFunction(/* exponent */) {
-  throw new Error('Not implemented');
+function getPowerFunction(exponent) {
+  return function power(n) {
+    return n ** exponent;
+  };
 }
 
 /**
@@ -87,8 +89,19 @@ function getPowerFunction(/* exponent */) {
  *   getPolynom(8)     => y = 8
  *   getPolynom()      => null
  */
-function getPolynom() {
-  throw new Error('Not implemented');
+function getPolynom(...arg) {
+  return function poly(x) {
+    switch (arg.length) {
+      case 1:
+        return arg[0];
+      case 2:
+        return arg[0] * x + arg[1];
+      case 3:
+        return arg[0] * x * x + arg[1] * x + arg[2];
+      default:
+        return null;
+    }
+  };
 }
 
 /**
